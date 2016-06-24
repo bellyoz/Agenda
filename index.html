@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app ="app" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Agenda de Contactos</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body ng-controller="PersonaCtrl">
+	
+	<center><button ng-click="showForm()" ng-hide="formVisibility">Añadir Contacto</button></center>
+	<div ng-show ="formVisibility" class="wrapper">
+		<h2>Añadir Contacto</h2>
+		<form >
+			Nombre: <input type="text" ng-model="nuevaPersona.nombre"></input>
+			Telefono: <input type="text" ng-model="nuevaPersona.telefono"></input>
+			Email: <input type="text" ng-model="nuevaPersona.email"></input>
+			<button ng-click="Save()">Guardar</button>
+		</form>
+	</div>
+	<h1>Contactos</h1>
+	<div class="wrapper">
+		<div class="contact" ng-repeat="persona in personas | orderBy : 'nombre'">
+			<div class="nombre" >{{persona.nombre}} - {{persona.telefono}}</div>
+			<span class="email">{{persona.email}}</span>
+		</div>
+	</div>
+	
+
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="javascript.js"></script>
+	
+</body>
+</html>
